@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:validation="http://www.mulesoft.org/schema/mule/validation" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd
+http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d79a5115-7b1b-452d-9294-819e8a9eb199" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="d56f75fc-6a09-4622-b3bf-7f01a98e4c39">
+		<http:request-connection protocol="HTTPS" host="itunes.apple.com" />
+	</http:request-config>
+	<flow name="demo1-liemFlow" doc:id="8b7346d8-adbe-45fd-bacc-4ba1aadefb10" >
+		<http:listener doc:name="Listener" doc:id="bd48cbc8-2a3e-4e9d-8824-9cb797e452a6" config-ref="HTTP_Listener_config" path="/search"/>
+		<logger level="INFO" doc:name="Logger" doc:id="29456e82-fc2c-469f-a94d-f51594dbda3e" message="payload=#[payload]"/>
+	</flow>
+</mule>
