@@ -20,6 +20,38 @@
 	<build>
 		<plugins>
 			<plugin>
+			    <groupId>org.mule.tools.maven</groupId>
+			    <artifactId>mule-maven-plugin</artifactId>
+			    <version>2.3.2</version>
+			    <configuration>
+			     <cloudHubDeployment>
+			      <uri>https://anypoint.mulesoft.com</uri>
+			      <muleVersion>4.3.0</muleVersion>
+			      <username>liem2</username>
+			      <region>us-east-2</region>
+			      <password>Steeldesk11!</password>
+			      <workers>1</workers>
+			      <objectStoreV2>true</objectStoreV2>
+			      <workerType>Micro</workerType>
+			      <applicationName>demo1-Liem</applicationName>
+			      <environment>Sandbox</environment>
+			      <properties>
+			       <key>value</key>
+			      </properties>
+			     </cloudHubDeployment>
+			    </configuration>
+			    <executions>
+			     <execution>
+			      <id>deploy</id>
+			      <phase>deploy</phase>
+			      <goals>
+			       <goal>deploy</goal>
+			      </goals>
+			     </execution>
+			    </executions>
+		   </plugin>
+			
+			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
